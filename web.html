@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<!-- html文件开头 -->
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>AZY test</title>
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; 
+      font: 12.0px 'PingFang SC'
+    }
+    img.rose {
+      padding: 0px;
+      height: 150px;
+      width: auto;
+    }
+    div.margin5{
+      margin:15px;
+    }
+    div.code{
+      margin:15px;
+      border: 2px; 
+      border-style: double; 
+      padding:5px;
+    }
+
+    span.dotted{
+      border: 2px;
+      /* border: aqua; */
+      border-style: dotted;
+    }
+
+    #paragraph_to_change{
+      color:red;
+      font-size: 15px;
+    }
+  </style>
+</head>
+<body>
+
+
+<h1>JavaScript教程</h1>
+<p style="text-align: center;">
+  <img class="rose" src="rose.jpeg"></img>
+</p>
+
+
+<p id="paragraph_to_change">
+  点击按钮改变此处文字，查看Javascript指引。
+</p>
+
+<script src="external_script.js"></script>
+<script>
+  document.write('<p>现在给出一些案例，接下来定义一个显示时间的标签，并实时更新。</p>');
+  
+  var c;
+  c = 16+"vivo"
+  console.log(c)
+</script>
+
+<div class='margin5'>
+  <span class = 'dotted' id="timer">
+    此处显示时间。
+  </span>
+</div>
+
+
+
+<script>
+  function showtime(){
+    document.getElementById('timer').innerHTML=Date();
+  }
+  showtime();
+  setInterval("showtime()", 1000)
+</script>
+
+<div style="text-align: center;">
+  <input type="button" value="点击调用外部JS函数" onclick="alerting()">
+  <input type="button" value="点击调用内部JS函数" onclick="window.alert('Function from <script> in html file called!')">
+  <br>
+  <span>
+    <input type="button" value="点击查看Javascript指引" onclick="changing()">
+  </span>
+</div>
+
+<h2>JavaScript 数据类型</h2>
+<h3>数组 Array</h3>
+<p>此处给出三种定义数组的方法，请点开源文件查看以下代码。</p>
+<script>
+  var cars1=new Array();
+  cars1[0]="Saab";
+  cars1[1]="Volvo";
+  cars1[2]="BMW";
+</script>
+<script>
+  var cars2 = new Array('Saab', 'Volvo', 'BMW');
+</script>
+<script>
+  var cars3=["Saab","Volvo","BMW"];
+</script>
+<h3>对象</h3>
+<p>此处给出对象的定义方法，请点开源文件查看以下代码。</p>
+<p>此处代码有console输出，请打开浏览器开发者工具查看。</p>
+<script>
+  var person={firstname:"John", lastname:"Doe", id:5566};
+  console.log("Here prints person.lastname: ", person.lastname);
+  console.log('Here prints person["lastname"]: ', person["lastname"]);
+</script>
+
+<p>当声明新变量时，使用new关键词可以声明变量类型。将变量值设为null时，清空变量。</p>
+<p>点开源文件查看案例</p>
+<script>
+  var my_string = new String;
+  var my_boolean = new Boolean;
+  var my_object = new Object;
+  console.log("此处输出typeof my_string：", typeof my_string)
+</script>
+
+<h3>JavaScript对象</h3>
+<p>对象通常包含属性和方法。属性用name: value,定义，方法用name: function(){}定义。</p>
+<p>此处有script元素示例，请打开源代码查看。</p>
+<script>
+  my_object={
+    word: "A string in my_object. ",
+    func: function(){
+      console.log("此处调用my_object的func方法，输出my_object的word值：", this.word);
+    }
+  }
+  my_object.func();
+
+</script>
+<p>直接按照元素名访问属性变量，但访问方法变量时需要在元素名中加括号。</p>
+<h3>函数</h3>
+<p>函数可包含0或数个argument，有或无返回值（return; 语句可直接退出函数，无返回值）。</p>
+<p>函数变量分为全局变量和局部变量，此处与各类高级语言类似，不多赘述。</p>
+<h3>变量</h3>
+<p>未声明的变量不可配置全局属性，已声明的变量可配置变量属性。</p>
+<div class="code">
+  <p>
+    var var1 = 1; <br>
+    var2 = 2; <br>
+    delete var1; //false, 不可删除 <br>
+    delete var2; //true, 可删除 <br>
+  </p>
+
+</div>
+
+<p>如果var 变量名 定义在函数作用域之外，则属于全局变量。
+  如果var 变量名 定义在函数作用域之内，则属于局部变量。
+  如果变量未定义且出现在函数作用域之内，则属于全局变量。但需要在函数调用后才能在全局看见，否则undefined。</p>
+
+<h3>JS 事件</h3>
+
+<p>使用&ltelement event = "JS代码" &gt 格式可以触发事件。下面将展示利用按钮触发事件的实例。</p>
+<div>
+  <input type="button" value="点我增加" onclick="increment()" >
+  <input type="button" value="点我减小" onclick="decrement()">
+  <br>
+  
+  <script>
+    var showing_num = 1;
+    function increment(){
+      showing_num = showing_num + 1;
+      var e = document.getElementById("num_modify_ex")
+      e.innerHTML = '此处showing_num初始值为1，点击按钮改变此值: ' + showing_num + '。'
+
+    
+    }
+    function decrement(){
+      showing_num = showing_num -1;
+      var e = document.getElementById("num_modify_ex")
+      e.innerHTML = '此处showing_num初始值为1，点击按钮改变此值: ' + showing_num + '。'
+
+    }
+  </script>
+  <p id="num_modify_ex">此处showing_num初始值为1，点击按钮改变此值: 1。</p>
+
+</div>
+
+<h3>字符串</h3>
+
+<p>字符串可以被定义成String，也可以被定义成Object。此处建议不要使用Object定义字符串，否则可能会造成一些麻烦。（例如使用绝对等于时Object类型不能等于String类型）</p>
+<div class="code">
+  <p>
+    var x="John"; //x类型为String <br>
+    var y= new String("John") //y类型为Object
+  </p>
+
+</div>
+
+<h3>运算符</h3>
+<p>JS的数学运算符与C类似，包括+，-，*，/，%，++，--，+=，-=，*=，/=，%=等。直接使用+可以拼接字符串。将字符串与数字相加，会得到字符串，无需自行转化。</p>
+<p>JS的比较、逻辑运算符有==，===，!=，!==，&gt，&lt，&gt=，&lt=，&&，||，!等。功能与其他语言中运算符类似。</p>
+<p>JS拥有三元运算符，下例：</p>
+<div class="code">
+  <p>
+    var positive=new Boolean;  <br>
+    \\var showing_num = 1; \\之前已经定义showing_num，因此注释掉
+    positive = (showing_num&lt0)?true:false;
+    
+  </p>
+
+  <script>
+    var positive=new Boolean;  
+    positive = (showing_num<0)?true:false;
+    console.log(positive);
+  </script>
+</div>
+<p>点击源代码可查看此处实现。</p>
+
+<h3>语句</h3>
+<h4>if语句</h4>
+<p>规则与C++类似，不多赘述。</p>
+<h4>swicth-case语句</h4>
+<p>规则与C++类似，此处给予简短复习。</p>
+<div class="code">
+  <p>
+    switch(n) <br>
+    {<br>
+      case 1:<br>
+        执行代码块 1<br>
+        break;<br>
+      case 2:<br>
+        执行代码块 2<br>
+        break;<br>
+      default:<br>
+        与 case 1 和 case 2 不同时执行的代码<br>
+    }
+  </p>
+</div>
+<h4>for/while/do-while语句</h4>
+<p>规则与C++类似，不多赘述。</p>
+<h3>typeof</h3>
+<div class="code">
+  <p>
+    typeof undefined             // undefined <br>
+    typeof null                  // object <br>
+    null === undefined           // false <br>
+    null == undefined            // true <br>
+  </p>
+</div>
+<h3>类型转换，正则表达式</h3>
+<p>与C++或Python类似，不会就自己查，朕又不是谷歌。</p>
+
+<img src="doge.jpeg" style="height: 100px; width:auto;"></img>
+<p>其实是因为我正则学得一般般啦。。。</p>
+<h3>异常处理</h3>
+<p>try-throw语句结构：</p>
+<div class="code">
+  <p>
+    try {<br>
+      //此处尝试一个操作，例如<br>
+      if(x == 0) throw "x是0" <br>
+      ...    //异常的抛出<br>
+    } catch(e) {<br>
+      //catch代码块只有异常时触发<br>
+      //比如，此处可以有一个e.message的输出<br>
+      ...    //异常的捕获与处理<br>
+    } finally {<br>
+      //无论前面异常与否，finally都会被执行<br>
+      ...    //结束处理<br>
+    }
+  </p>
+</div>
+<h3>变量提升</h3>
+<p>变量/函数声明会提升到文件顶部，而变量声明时赋值则不会执行该规则。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
